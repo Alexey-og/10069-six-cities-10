@@ -6,6 +6,8 @@ type MainScreenProps = {
 }
 
 function MainScreen({placesCount}: MainScreenProps): JSX.Element {
+  const placesArray = [...Array(placesCount).keys()];
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -96,11 +98,11 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
+                {
+                  placesArray.map((place) => (
+                    <PlaceCard key={`place-${place + 1}`} />
+                  ))
+                }
               </div>
             </section>
             <div className="cities__right-section">

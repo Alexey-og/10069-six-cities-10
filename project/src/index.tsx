@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     <App
       placesCount={PLACES_COUNT}
-      offer = {offers[0]}
+      offers = {offers}
     />
   </React.StrictMode>,
 );

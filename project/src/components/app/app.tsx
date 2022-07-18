@@ -8,14 +8,14 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 import RoomScreen from '../../pages/property-screen/property-screen';
 
-import { Offer } from '../../types/offer';
+import { Offers } from '../../types/offer';
 
 type AppScreenProps = {
   placesCount: number;
-  offer: Offer;
+  offers: Offers;
 }
 
-function App({placesCount, offer}: AppScreenProps): JSX.Element {
+function App({placesCount, offers}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -24,7 +24,7 @@ function App({placesCount, offer}: AppScreenProps): JSX.Element {
           element={
             <MainScreen
               placesCount={placesCount}
-              offer = {offer}
+              offers = {offers}
             />
           }
         />

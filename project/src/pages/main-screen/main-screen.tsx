@@ -1,18 +1,15 @@
 import {Link} from 'react-router-dom';
 import Logo from '../../components/logo/logo';
-import PlaceCard from '../../components/place-card/place-card';
+import PlaceCardsList from '../../components/place-cards-list/place-cards-list';
 
-import { Offer } from '../../types/offer';
-import { offers } from '../../mocks/offers';
+import { Offers } from '../../types/offer';
 
 type MainScreenProps = {
   placesCount: number;
-  offer: Offer;
+  offers: Offers;
 }
 
-function MainScreen({placesCount, offer}: MainScreenProps): JSX.Element {
-  const placesArray = [...Array(placesCount).keys()];
-
+function MainScreen({placesCount, offers}: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -101,14 +98,7 @@ function MainScreen({placesCount, offer}: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {
-                  placesArray.map((place) => (
-                    <PlaceCard
-                      key={`place-${place + 1}`}
-                      offer = {offers[0]}
-                    />
-                  ))
-                }
+                <PlaceCardsList offers = {offers} />
               </div>
             </section>
             <div className="cities__right-section">

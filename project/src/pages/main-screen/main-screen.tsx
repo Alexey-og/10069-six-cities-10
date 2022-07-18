@@ -2,11 +2,15 @@ import {Link} from 'react-router-dom';
 import Logo from '../../components/logo/logo';
 import PlaceCard from '../../components/place-card/place-card';
 
+import { Offer } from '../../types/offer';
+import { offers } from '../../mocks/offers';
+
 type MainScreenProps = {
   placesCount: number;
+  offer: Offer;
 }
 
-function MainScreen({placesCount}: MainScreenProps): JSX.Element {
+function MainScreen({placesCount, offer}: MainScreenProps): JSX.Element {
   const placesArray = [...Array(placesCount).keys()];
 
   return (
@@ -99,7 +103,10 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
               <div className="cities__places-list places__list tabs__content">
                 {
                   placesArray.map((place) => (
-                    <PlaceCard key={`place-${place + 1}`} />
+                    <PlaceCard
+                      key={`place-${place + 1}`}
+                      offer = {offers[0]}
+                    />
                   ))
                 }
               </div>

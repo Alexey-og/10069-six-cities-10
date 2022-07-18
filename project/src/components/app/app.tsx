@@ -1,23 +1,32 @@
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
-import {AppRoute, AuthorizationStatus} from '../../const';
-import MainScreen from '../../pages/main-screen/main-screen';
-import LoginScreen from '../../pages/login-screen/login-screen';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const';
+
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
-import RoomScreen from '../../pages/property-screen/property-screen';
+import LoginScreen from '../../pages/login-screen/login-screen';
+import MainScreen from '../../pages/main-screen/main-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
+import RoomScreen from '../../pages/property-screen/property-screen';
+
+import { Offer } from '../../types/offer';
 
 type AppScreenProps = {
   placesCount: number;
+  offer: Offer;
 }
 
-function App({placesCount}: AppScreenProps): JSX.Element {
+function App({placesCount, offer}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen placesCount={placesCount} />}
+          element={
+            <MainScreen
+              placesCount={placesCount}
+              offer = {offer}
+            />
+          }
         />
         <Route
           path={AppRoute.Login}
